@@ -1,0 +1,72 @@
+<?php
+session_start();
+
+// Jika sudah login, redirect ke dashboard
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    header('Location: dashboard.php');
+    exit;
+}
+
+// Proses login
+$error = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+    
+    if ($username === 'admin123' && $password === 'admin123') {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        header('Location: dashboard.php');
+        exit;
+    } else {
+        $error = 'Username atau password salah!';
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explosio - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h1>EXPLOSIO</h1>
+            <p>Kontrol Relay ESP32</p>
+        </div>
+        
+        <div class="form-container">
+            <form method="POST" action="">
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="username" name="username" placeholder="Masukkan username" required value="admin123">
+                </div>
+                
+                <div class="input-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password" required value="admin123">
+                </div>
+                
+                <button type="submit" class="btn">Login</button>
+                
+                <?php if ($error): ?>
+                <div class="error-message">
+                    <?php echo $error; ?>
+                </div>
+                <?php endif; ?>
+            </form>
+        </div>
+        
+        <div class="footer">
+            &copy; 2023 Explosio - IoT Control System | Powered by ESP32 & Ngrok
+        </div>
+    </div>
+</body>
+</html>

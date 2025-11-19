@@ -1,0 +1,260 @@
+\:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --accent: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --gray: #95a5a6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.header p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    background: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+}
+
+.logo i {
+    font-size: 32px;
+}
+
+.form-container {
+    padding: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.dashboard {
+    padding: 30px;
+    text-align: center;
+}
+
+.dashboard h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.status {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.status.on {
+    color: var(--success);
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.status.off {
+    color: var(--danger);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    margin: 20px 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 32px;
+    width: 32px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--success);
+}
+
+input:checked + .slider:before {
+    transform: translateX(40px);
+}
+
+.connection-status {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.connected {
+    background: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+}
+
+.disconnected {
+    background: rgba(231, 76, 60, 0.2);
+    color: var(--danger);
+}
+
+.logout-btn {
+    margin-top: 20px;
+    background: var(--gray);
+}
+
+.logout-btn:hover {
+    background: #7f8c8d;
+}
+
+.error-message {
+    color: var(--danger);
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--gray);
+    font-size: 12px;
+    border-top: 1px solid #eee;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}

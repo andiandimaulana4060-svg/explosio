@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Prioritaskan file yang benar-benar ada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect API requests to api.php
+RewriteRule ^api/(.*)$ api.php [QSA,L]
+
+# Halaman dashboard
+RewriteRule ^dashboard/?$ dashboard.php [L]
+
+# Redirect root to index.php
+RewriteRule ^$ index.php [L]
